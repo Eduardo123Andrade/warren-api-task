@@ -12,4 +12,10 @@ app.get('/portfolios/:id', getCustomer, async (req, res) => {
   res.json(portfolio)
 })
 
+app.get('/test', (req, res) => {
+  return res.status(200).json({
+    message: "i'm working"
+  })
+})
+
 module.exports = app
