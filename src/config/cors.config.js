@@ -3,7 +3,7 @@ const CORSError = require("../errors/cors-error")
 
 const permissionList = ["http://localhost:3000"];
 
-export const corsConfig = {
+const corsConfig = {
   allowedHeaders:
     "Origin, X-Requested-With, Content-Type, Accept, Authorization",
   origin: (origin, callback) => {
@@ -14,3 +14,7 @@ export const corsConfig = {
     );
   },
 };
+
+module.exports = {
+  corsConfig
+}
