@@ -1,10 +1,11 @@
 const { Router } = require('express')
-const httpStatus = require('http-status')
-const { getCustomer } = require('../middlewares/getCustomer');
-const {TransactionController} = require('../controllers')
+const { getCustomer, validatePath } = require('../middlewares');
+const { TransactionController } = require('../controllers')
+const { depositPathSchema } = require('../validations')
+
 const TransactionRouter = Router()
 
-TransactionRouter.get('/deposits', getCustomer, TransactionController.getDeposits)
+TransactionRouter.get('/deposits', getCustomer, validatePath(depositPathSchema), TransactionController.getDeposits)
 
 module.exports = {
     TransactionRouter
