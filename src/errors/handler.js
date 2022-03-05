@@ -3,7 +3,8 @@ const { ValidationError } = require("yup");
 const ERROR_MESSAGE = require("../utils/messages/error-messages");
 const { CustomError } = require('./CustomError')
 const { NotFoundError } = require('./NotFoundError')
-const {VALIDATION_MESSAGE} = require('../utils/messages')
+const { BalanceError } = require('./BalanceError')
+const { VALIDATION_MESSAGE } = require('../utils/messages')
 
 const errorHandler = (
   error,
@@ -27,6 +28,9 @@ const errorHandler = (
       return response.status(error.status).json({ message: error.message });
 
     case NotFoundError:
+      return response.status(error.status).json({ message: error.message });
+
+    case BalanceError:
       return response.status(error.status).json({ message: error.message });
 
     default: {

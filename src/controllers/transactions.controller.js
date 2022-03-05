@@ -1,25 +1,36 @@
 const httpStatus = require("http-status")
-const {TransactionService} = require('../services')
+const { TransactionService } = require('../services')
 
 const getDeposits = async (req, res) => {
-    const {status, start, end} = req.query
+    const { status, start, end } = req.query
 
     const transactions = await TransactionService.getDeposits(status, start, end)
-    
+
     return res.status(httpStatus.OK).json(transactions)
 }
 
 
 const doDeposit = async (req, res) => {
-    const {amount} = req.body
     const customerId = req.header('customer-id')
+    const { amount } = req.body
 
     const customer = await TransactionService.doDeposit(customerId, amount)
 
-    return res.status(httpStatus.OK).json({customer})
+    return res.status(httpStatus.CREATED).json({ customer })
+}
+
+const transferBetweenAccounts = async (req, res) => {
+    const customer = await req.customer
+    const { customerId } = req.params
+    const { amount } = req.body
+
+    const transaction = await TransactionService.transferBetweenAccounts(customer, customerId, amount)
+
+    return res.status(httpStatus.CREATED).json({ transaction })
 }
 
 module.exports = {
     getDeposits,
-    doDeposit
+    doDeposit,
+    transferBetweenAccounts
 }

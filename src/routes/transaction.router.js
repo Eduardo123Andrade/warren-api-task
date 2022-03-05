@@ -20,6 +20,13 @@ TransactionRouter.post(
     TransactionController.doDeposit
 )
 
+TransactionRouter.post(
+    '/account-transfer/:customerId',
+    getCustomer,
+    validateData(doDepositSchema),
+    TransactionController.transferBetweenAccounts
+)
+
 module.exports = {
     TransactionRouter
 }
