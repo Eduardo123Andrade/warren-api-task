@@ -1,8 +1,7 @@
-import httpStatus from "http-status";
-import { ValidationError } from "yup";
+const { ValidationError } = require("yup");
 
 
- const errorHandler = (
+const errorHandler = (
   error,
   request,
   response,
