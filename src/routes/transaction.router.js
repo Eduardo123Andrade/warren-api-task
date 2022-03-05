@@ -7,6 +7,8 @@ const TransactionRouter = Router()
 
 TransactionRouter.get('/deposits', getCustomer, validatePath(depositPathSchema), TransactionController.getDeposits)
 
+TransactionRouter.post('/deposit', getCustomer, TransactionController.doDeposit)
+
 module.exports = {
     TransactionRouter
 }
