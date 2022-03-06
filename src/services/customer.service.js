@@ -52,5 +52,5 @@ const topAllocationAmount = async (page, pageSize) => {
 module.exports = {
 	doDeposit,
 	getCostumer,
-	topAllocationAmount
+	topAllocationAmount,
 }
