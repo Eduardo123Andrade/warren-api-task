@@ -26,10 +26,23 @@ const getCostumer = async (customerId) =>
 const topAllocationAmount = async (page, pageSize) => {
 	const customers = await Customer.aggregate([
 		{
-			"$sort": { "portfolios.amount": ORDER_BY.DESC }
+			"$addFields": {
+				"totalAllocated": {
+					"$reduce": {
+						input: "$portfolios",
+						initialValue: 0,
+						in: {
+							$add: ["$$value", "$$this.amount"]
+						}
+					}
+				}
+			}
 		},
-		{ '$limit': pageSize },
+		{
+			"$sort": { "totalAllocated": ORDER_BY.DESC }
+		},
 		{ '$skip': (--page) * pageSize },
+		{ '$limit': pageSize },
 	])
 
 	return customers
