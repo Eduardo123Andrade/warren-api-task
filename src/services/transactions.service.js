@@ -3,6 +3,7 @@ const { TRANSACTION_TYPE, STATUS } = require('../utils');
 const CustomerService = require('./customer.service');
 const PortfolioService = require('./portfolios.service');
 const { BalanceError } = require('../errors/BalanceError')
+const { PortfolioBelongAAnotherUserError } = require('../errors/PortfolioBelongAAnotherUserError')
 const mongoose = require('mongoose');
 const { ObjectId } = mongoose.Types
 const { ORDER_BY } = require('../utils')
@@ -93,7 +94,7 @@ const transferBetweenPortfolios = async ({
 			...makeDefaultPropertiesToTransactionCreation(customer._id, amount),
 			...transactionData
 		})
-		// lançar exeçao
+		throw new PortfolioBelongAAnotherUserError()
 	}
 
 	const afterDeposit = originPortfolio.amount - amount
