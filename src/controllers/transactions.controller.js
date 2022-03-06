@@ -29,8 +29,25 @@ const transferBetweenAccounts = async (req, res) => {
     return res.status(httpStatus.CREATED).json({ transaction })
 }
 
+const transferBetweenPortfolios = async (req, res) => {
+    const customerId = req.header('customer-id')
+    const { fromPortfolio, toPortfolio } = req.query
+    const { amount } = req.body
+
+    const transaction = await TransactionService
+        .transferBetweenPortfolios({
+            customerId,
+            fromPortfolioId: fromPortfolio,
+            toPortfolioId: toPortfolio,
+            amount
+        })
+
+    return res.status(httpStatus.CREATED).json(transaction)
+}
+
 module.exports = {
     getDeposits,
     doDeposit,
-    transferBetweenAccounts
+    transferBetweenAccounts,
+    transferBetweenPortfolios
 }
