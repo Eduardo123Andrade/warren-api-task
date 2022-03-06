@@ -8,6 +8,9 @@ const AMOUNT_MUST_TO_BE_MORE_THAN_ZERO = 'Amount must ot be more than zero'
 
 const PORTFOLIO_ID_IS_REQUIRED = 'Portfolio id is required'
 
+const PAGE_NUMBER_IS_REQUIRED = 'Page number is required'
+const PAGE_SIZE_IS_REQUIRED = 'Page size is required'
+
 const INVALID_OBJECT_ID_FORMAT = 'Invalid object id format'
 const VALIDATION_ERROR = 'Validation error'
 
@@ -22,5 +25,7 @@ module.exports = {
     AMOUNT_MUST_TO_BE_MORE_THAN_ZERO,
     AMOUNT_IS_REQUIRED,
     PORTFOLIO_ID_IS_REQUIRED,
-    INVALID_OBJECT_ID_FORMAT
+    INVALID_OBJECT_ID_FORMAT,
+    PAGE_NUMBER_IS_REQUIRED,
+    PAGE_SIZE_IS_REQUIRED
 }
