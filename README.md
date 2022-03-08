@@ -43,13 +43,13 @@ Portfólio de investimentos é o conjunto de aplicações do investidor, também
 
 A imagem da API do projeto é construida apartir de um Dockerfile. Utilizamos [docker-compose](https://docs.docker.com/compose/gettingstarted/) para inicializar os containers da API e database.
 
-Para rodar a aplicação, inicializar e popular o banco de dados basta rodar `docker-compose up`.
+Para rodar a aplicação, inicializar e popuget-portfolio-by-id/lar o banco de dados basta rodar `docker-compose up`.
 
 ## APIs a implementar
 
 Para especificar qual customer da request é repassado o seu id via header: `customer-id = <string>`
 
-1. ***GET*** `/portfolios/:id` - Essa rota esta quebrada! Dado um id de um portfolio essa rota deve retornar os dados do portfolio.
+1. ***GET*** `/portfolios/get-portfolio-by-id/:id` - Essa rota esta quebrada! Dado um id de um portfolio essa rota deve retornar os dados do portfolio.
 
 1. ***GET*** `/portfolios/goalReached` - Retorna uma lista de todos portfolios de um determinado customer em que a quantidade alocada no portfolio é igual ou maior que o objetivo alvo do portfolio.
 
